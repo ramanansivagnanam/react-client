@@ -1,0 +1,29 @@
+.post-container{
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    width: 600px;
+    border: 1px solid #000;
+}
+.inputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 8px;
+}
+.inputContainer .textAreaPosts{
+    width: 80%;
+}
+.btnPrimary {
+    display: flex;
+    padding:8px;
+    height:24px;
+    width: fit-content;
+    color: #fff;
+    align-items: center;
+    background-color: rgb(6, 109, 245);
+    border-radius: 10px;
+    margin: 10px auto;
+    font-size: 12px;
+    cursor: pointer;
+}
