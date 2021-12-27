@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { getPosts } from "../../redux/actions/Actions";
 import "./PostList.css";
 import PostListItem from "./PostListItem";
 export default function PostList() {
-  const [posts, updatePosts] = useState([]);
+  const { posts }  = useSelector((state)=> ({
+     posts: state.post.posts
+  }));  
+  const disPatch = useDispatch();
 
-  const getPosts = async () => {
-    const res = await fetch(`http://localhost:4000/posts`);
-    const data = await res.json();
-    updatePosts(data);
-  };
+  const getPostsFromAPI = () => {
+    disPatch(getPosts());
+  }
 
   useEffect(() => {
-    getPosts();
+    getPostsFromAPI();
   },[]);
 
   return (
     <div className="post-list-container">
-      {posts.map((post) => (
+      {posts && posts.map((post) => (
         <PostListItem key={post.id} id={post.id} title={post.title} />
       ))}
     </div>
